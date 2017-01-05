@@ -1,17 +1,21 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import LineItem from './LineItem.jsx'
-import '../css/LineItem.css';
+import LineItem from './LineItem.jsx';
+import LineRefreshBtn from './LineRefreshBtn.jsx';
+// import '../css/LineItem.css';
 
 class LineItemContainer extends Component {
   constructor(){
     super()
     this.state = {
-      trainLines: []
+      trainLines: [],
+      refreshTime: "",
+      error: false
     }
   }
 	render() {
     var desruptionReason;
+
     if(this.state.trainLines){
       var lineList = this.state.trainLines;
 
@@ -32,6 +36,7 @@ class LineItemContainer extends Component {
     }
 		return (
 			<div className="lineList">
+    <LineRefreshBtn callRefresh = {this.callRefresh} refreshTime = {this.state.refreshTime}/>
         <ul>
           {lineList}
         </ul>
@@ -41,10 +46,24 @@ class LineItemContainer extends Component {
 
   componentDidMount(){
     axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status ')
-    .then((data) => {
-      console.log(data)
+    .then((response) => {
+      console.log(response)
       this.setState({
-          trainLines:data.data
+          trainLines:response.data,
+      })
+    })
+    .catch((error) => console.log(error));
+  }
+
+  callRefresh = () => {
+    console.log("Calling A refresh");
+    axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status ')
+    .then((response) => {
+      console.log(response)
+    
+      this.setState({
+          trainLines:response.data,
+          refreshTime: Date.now()
       })
     })
     .catch((error) => console.log(error));

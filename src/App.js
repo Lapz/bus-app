@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchBar from './Components/SearchBar.jsx';
+// import SearchBar from './Components/SearchBar.jsx';
 import  {createStationQueryUrl} from './Helpers/StationQuery';
-import StationItemContainer from './Components/StationItemContainer.jsx'
+// import StationItemContainer from './Components/StationItemContainer.jsx'
 import axios from 'axios';
 
-import LineItemContainer from './Components/LineItemContainer.jsx'
+import LineItemContainer from './Components/LineStatus/LineItemContainer.jsx'
 
 class App extends Component {
 
@@ -20,13 +20,11 @@ class App extends Component {
     return (
       <div className="linewrapper">
         <LineItemContainer />
-        // <SearchBar handleSubmitText={this.handleSubmitText} />
-        // <StationItemContainer stationArray={this.state.stations}/>
-
       </div>
     );
   }
-
+ // <SearchBar handleSubmitText={this.handleSubmitText} />
+        // <StationItemContainer stationArray={this.state.stations}/>
   // handleSubmitText = (text) => {
   //   console.log(text);
   //   var url = createStationQueryUrl(text);
