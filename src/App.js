@@ -5,6 +5,8 @@ import  {createStationQueryUrl} from './Helpers/StationQuery';
 import StationItemContainer from './Components/StationItemContainer.jsx'
 import axios from 'axios';
 
+import LineItemContainer from './Components/LineItemContainer.jsx'
+
 class App extends Component {
 
   constructor(){
@@ -16,29 +18,30 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <SearchBar handleSubmitText={this.handleSubmitText} />
-        <StationItemContainer stationArray={this.state.stations}/>
+      <div className="linewrapper">
+        <LineItemContainer />
+        // <SearchBar handleSubmitText={this.handleSubmitText} />
+        // <StationItemContainer stationArray={this.state.stations}/>
 
       </div>
     );
   }
 
-  handleSubmitText = (text) => {
-    console.log(text);
-    var url = createStationQueryUrl(text);
-
-  	axios.get(url).then((response) => {
-  		console.log(response)
-  		console.log(response.data.matches)
-      this.setState({
-        stations:response.data.matches
-      })
-  	}).catch((error) => {
-  		console.log(error);
-  	})
-
-  }
+  // handleSubmitText = (text) => {
+  //   console.log(text);
+  //   var url = createStationQueryUrl(text);
+  //
+  // 	axios.get(url).then((response) => {
+  // 		console.log(response)
+  // 		console.log(response.data.matches)
+  //     this.setState({
+  //       stations:response.data.matches
+  //     })
+  // 	}).catch((error) => {
+  // 		console.log(error);
+  // 	})
+  //
+  // }
 
 
 }
