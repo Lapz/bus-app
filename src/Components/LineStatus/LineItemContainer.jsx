@@ -3,7 +3,7 @@ import axios from 'axios';
 import LineItem from './LineItem.jsx';
 import LineRefreshBtn from './LineRefreshBtn.jsx';
 import {Link} from 'react-router';
-
+import {getFormatedCurrentDate} from './Helpers/refreshTime';
 import './css/LineItem.css';
 
 class LineItemContainer extends Component {
@@ -22,6 +22,7 @@ class LineItemContainer extends Component {
       var lineList = this.state.trainLines;
 
       lineList  = lineList.map((item,index) => {
+        
         if(item.lineStatuses[0].reason){
           desruptionReason = item.lineStatuses[0].reason
           return(
@@ -62,7 +63,6 @@ class LineItemContainer extends Component {
     })
     .catch((error) => {
       console.log(error)
-
       this.setState({
         error:true
       })
@@ -74,15 +74,12 @@ class LineItemContainer extends Component {
     axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status ')
     .then((response) => {
 
-      console.log(response)
-      var currentTime = new Date
-      // toISOString().replace(/[^0-9]/g, "")
-      var currentTimeString = currentTime.toISOString().slice(11,16).replace(/T/g," ");
-      var currentDayMonthYear = currentTime.toISOString().slice(0,10).replace(/-/g," ").split(" ").reverse().join("-")
-      var fullString = currentDayMonthYear + " " +currentTimeString;
+      
+      var newRefreshTime = getFormatedCurrentDate();
+     
       this.setState({
           trainLines:response.data,
-          refreshTime: fullString,
+          refreshTime: newRefreshTime,
           error:false
       })
     })

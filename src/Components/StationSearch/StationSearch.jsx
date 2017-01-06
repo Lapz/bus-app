@@ -35,7 +35,7 @@ class StationSearch extends Component{
   		console.log(response.data.matches)
       this.setState({
         stations:response.data.matches,
-        error:true
+        error:false
       })
   	}).catch((error) => {
   		console.log(error);
