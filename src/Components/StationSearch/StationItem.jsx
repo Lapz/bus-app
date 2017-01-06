@@ -31,14 +31,14 @@ class StationItem extends Component {
         //console.log(this.props.stationId);
     }
 
-		componentDidMount(){
-			var url = createOutBoundUrl(this.props.stationId);
-			console.log(url);
-	  axios.get(url)
-		.then((response)=>{
-			console.log(response.data)
-})
-}
+	componentDidMount() { 
+		var url = createOutBoundUrl(this.props.stationId);
+		console.log(url);
+	    axios.get(url)
+        .then((response)=>{
+            console.log(response.data)
+        })
+    }
 }
 
 export default StationItem;

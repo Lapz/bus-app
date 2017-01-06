@@ -16,7 +16,7 @@ class LineItemContainer extends Component {
     }
   }
 	render() {
-    var desruptionReason;
+  
 
     if(this.state.trainLines){
       var lineList = this.state.trainLines;
@@ -24,9 +24,8 @@ class LineItemContainer extends Component {
       lineList  = lineList.map((item,index) => {
         
         if(item.lineStatuses[0].reason){
-          desruptionReason = item.lineStatuses[0].reason
           return(
-            <LineItem lineName={item.id} distruptionReason={desruptionReason} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
+            <LineItem lineName={item.id} distruptionReason={item.lineStatuses[0].reason} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
           )
         }
 
