@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 // import SearchBar from './Components/SearchBar.jsx';
-import  {createStationQueryUrl} from './Helpers/StationQuery';
+// import  {createStationQueryUrl} from './Helpers/StationQuery';
 // import StationItemContainer from './Components/StationItemContainer.jsx'
-import axios from 'axios';
 
-import LineItemContainer from './Components/LineStatus/LineItemContainer.jsx'
+import {Router, Route, browserHistory, IndexRoute } from 'react-router';
+import StationSearch from './Components/StationSearch/StationSearch.jsx';
+import LineStatus from './Components/LineStatus/LineItemContainer.jsx'
 
 class App extends Component {
 
@@ -18,30 +19,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="linewrapper">
-        <LineItemContainer />
-      </div>
+      <Router history={browserHistory} >
+      <Route path = {'/'} component= {LineStatus}></Route>
+      <Route path = {'/findStation'} component = {StationSearch}></Route>
+      </Router>
+     
     );
   }
- // <SearchBar handleSubmitText={this.handleSubmitText} />
-        // <StationItemContainer stationArray={this.state.stations}/>
-  // handleSubmitText = (text) => {
-  //   console.log(text);
-  //   var url = createStationQueryUrl(text);
-  //
-  // 	axios.get(url).then((response) => {
-  // 		console.log(response)
-  // 		console.log(response.data.matches)
-  //     this.setState({
-  //       stations:response.data.matches
-  //     })
-  // 	}).catch((error) => {
-  // 		console.log(error);
-  // 	})
-  //
-  // }
-
-
 }
 
 export default App;

@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import LineItem from './LineItem.jsx';
 import LineRefreshBtn from './LineRefreshBtn.jsx';
-// import '../css/LineItem.css';
+import {Link} from 'react-router';
+
+import './css/LineItem.css';
 
 class LineItemContainer extends Component {
   constructor(){
@@ -35,11 +37,17 @@ class LineItemContainer extends Component {
 
     }
 		return (
-			<div className="lineList">
-    <LineRefreshBtn callRefresh = {this.callRefresh} refreshTime = {this.state.refreshTime}/>
-        <ul>
-          {lineList}
-        </ul>
+			<div className="wrapper">
+      
+      <div className = "Header">
+        <LineRefreshBtn callRefresh = {this.callRefresh} refreshTime = {this.state.refreshTime}/>
+        <Link to="/findStation"> Find Stations </Link>
+      </div>
+    
+    {
+        (this.state.error === false ) ? <div className = "lineList"><ul>{lineList} </ul></div> :<p> Their was an error </p>
+      }
+        
 			</div>
 		);
 	}
@@ -49,24 +57,42 @@ class LineItemContainer extends Component {
     .then((response) => {
       console.log(response)
       this.setState({
-          trainLines:response.data,
+          trainLines:response.data
       })
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error)
+
+      this.setState({
+        error:true
+      })
+    });
   }
 
   callRefresh = () => {
     console.log("Calling A refresh");
     axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status ')
     .then((response) => {
+
       console.log(response)
-    
+      var currentTime = new Date
+      // toISOString().replace(/[^0-9]/g, "")
+      var currentTimeString = currentTime.toISOString().slice(11,16).replace(/T/g," ");
+      var currentDayMonthYear = currentTime.toISOString().slice(0,10).replace(/-/g," ").split(" ").reverse().join("-")
+      var fullString = currentDayMonthYear + " " +currentTimeString;
       this.setState({
           trainLines:response.data,
-          refreshTime: Date.now()
+          refreshTime: fullString,
+          error:false
       })
     })
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      console.log(error)
+
+      this.setState({
+        error:true
+      })
+    });
   }
 
 }

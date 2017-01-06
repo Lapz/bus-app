@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {createOutBoundUrl} from '../Helpers/StationQuery';
+import {createOutBoundUrl} from './Helpers/StationQuery';
 
 class StationItemMoreDetailOutbound extends Component {
 	constructor(){

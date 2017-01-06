@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import StationItemMoreDetail from './StationItemMoreDetail.jsx';
 import axios from 'axios';
-import {createOutBoundUrl} from '../Helpers/StationQuery';
+import {createOutBoundUrl} from './Helpers/StationQuery';
 
 class StationItem extends Component {
 	constructor() {
