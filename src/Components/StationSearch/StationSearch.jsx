@@ -3,7 +3,7 @@ import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import  {createStationQueryUrl} from './Helpers/StationQuery';
 import StationItemContainer from './StationItemContainer.jsx'
-
+import {Link} from 'react-router';
 class StationSearch extends Component{
     constructor(){
     super()
@@ -18,6 +18,8 @@ class StationSearch extends Component{
       return(
     <div className="wrapper">
         <SearchBar handleSubmitText={this.handleSubmitText} />
+        <Link to ="/">Tube Service Status</Link>
+
         {
           (this.state.error === false) ?  <StationItemContainer stationArray={this.state.stations}/> : <p> Their was an error</p>
         }

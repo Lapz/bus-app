@@ -1,6 +1,10 @@
 .lineList p {
-    color: #777;
+    color: #000;
     font-style: italic;
+}
+
+#title {
+     text-transform: capitalize;
 }
 
 .lineList ul {
@@ -12,7 +16,15 @@
   background-color: lightblue;
 }
 
-.header {
+.refresh-wrapper {
     display: flex;
+    align-items: center;
+}
+
+.refresh-wrapper button{
     justify-content: flex-start;
+}
+
+.refresh-wrapper a {
+    justify-content: flex-end;
 }

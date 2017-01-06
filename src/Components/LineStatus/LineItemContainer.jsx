@@ -4,7 +4,8 @@ import LineItem from './LineItem.jsx';
 import LineRefreshBtn from './LineRefreshBtn.jsx';
 import {Link} from 'react-router';
 import {getFormatedCurrentDate} from './Helpers/refreshTime';
-import './css/LineItem.css';
+import './css/LineItemContainer.css';
+
 
 class LineItemContainer extends Component {
   constructor(){
@@ -39,7 +40,7 @@ class LineItemContainer extends Component {
 		return (
 			<div className="wrapper">
       
-      <div className = "Header">
+      <div className = "refresh-wrapper">
         <LineRefreshBtn callRefresh = {this.callRefresh} refreshTime = {this.state.refreshTime}/>
         <Link to="/findStation"> Find Stations </Link>
       </div>
