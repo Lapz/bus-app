@@ -1,0 +1,23 @@
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btnWrapper button {
+    /*margin-left: 5px;*/
+    flex-basis: 0;
+    padding: 10px;
+    background: #7f4cc1;
+    border-radius: 0 4px 4px 0;
+    border: 2px solid #7f4cc1;
+    color: #fff;
+    text-transform: uppercase;
+    display: block;
+    word-wrap: break-word;
+}
+
+.btnWrapper p {
+    align-self: flex-start;
+    color: blue;
+}

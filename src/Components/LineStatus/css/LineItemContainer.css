@@ -1,0 +1,30 @@
+.lineList p {
+    color: #000;
+    font-style: italic;
+}
+
+#title {
+     text-transform: capitalize;
+}
+
+.lineList ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.lineList ul li:hover{
+  background-color: lightblue;
+}
+
+.refresh-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.refresh-wrapper button{
+    justify-content: flex-start;
+}
+
+.refresh-wrapper a {
+    justify-content: flex-end;
+}
