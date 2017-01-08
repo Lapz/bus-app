@@ -47,23 +47,36 @@ class StationSearch extends Component{
     .then((array) =>{
       var hubID = "HUBSRA";
       var hubIDS = array[0]
+      var normalHubIds = array[1]
 
-      var getRequest = hubIDS.map((hub,index) => {
-      
-      return function() {
-//adsf
-          return axios.get(`https://api.tfl.gov.uk/StopPoint/${hub.id}/`)
-      }
+      var getRequests = hubIDS.map((hub,index) => {
+        var hubID = hub.id
+    
+          return axios.get(`https://api.tfl.gov.uk/StopPoint/${hubID}/`)
+    
             // .then((data) => {
             //   return filterHubIDS(data);
             // })
       }) 
-      console.log(getRequest[0]())
-      return axios.all([getRequest]) 
+      
+      return [getRequests,normalHubIds]
     })
-    .then(axios.spread((data) =>{
-      console.log(data)
-    }))
+    .then((array) =>{
+      var as = []
+      var hubGetRequest = array[0]
+      return axios.all(hubGetRequest)
+    })
+    .then((response) => {
+          console.log(response)
+
+      return response.map((item,index) => {
+      console.log(item);
+          console.log(filterHubIDS(item), index);
+      })
+    })
+    .then((data) =>{
+        console.log(data);
+      })
     .catch((error) => {
   		console.log(error);
       this.setState({

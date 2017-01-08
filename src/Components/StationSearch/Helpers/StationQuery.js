@@ -25,7 +25,8 @@ function completeMatches (responseData) {
 function filterHubIDS(hubData) {
 	var allIds = hubData.data.children;
 	var tubeIds =  allIds.filter((stationData) => {
-				return stationData.stopType === "NaptanMetroStation";
+				return stationData.stopType === "NaptanMetroStation" || stationData.stopType === 
+"NaptanRailStation";
 			})
 	return tubeIds
 }
