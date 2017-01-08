@@ -14,9 +14,9 @@ class StationItem extends Component {
 
 
     render() {
-        var stationServices = this.props.stationServices.map((transportType) =>{
+        var stationServices = this.props.stationServices.map((transportType,index) =>{
             return(
-                <li>
+                <li key ={index}>
                 {transportType}
                 </li>
             )
