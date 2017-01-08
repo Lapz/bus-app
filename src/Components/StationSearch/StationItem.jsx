@@ -28,7 +28,10 @@ class StationItem extends Component {
 
                     <h1>{this.props.stationName}</h1>
                     <p>Methods of transport offered: </p>
-                        {stationServices}
+                    <ul>
+                    {stationServices}
+                    </ul>
+                        
                 </div>
 
             </li>

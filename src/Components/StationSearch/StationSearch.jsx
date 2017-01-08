@@ -31,6 +31,7 @@ class StationSearch extends Component{
 
   handleSubmitText = (text) => {
     console.log(text);
+    var normalIDS;
     var url = createStationQueryUrl(text);
   
     // getHubStationCodes("HUBSRA");
@@ -39,43 +40,47 @@ class StationSearch extends Component{
     .then((response) => {
     console.log(response);
 
-    var d =	completeMatches(response);
-    console.log(d);
-    return d;
+    var matchesArrayByType =	completeMatches(response);
+  
+    return matchesArrayByType;
 
     })
     .then((array) =>{
-      var hubID = "HUBSRA";
-      var hubIDS = array[0]
-      var normalHubIds = array[1]
+      var hubIds = array[0]
+      normalIDS = array[1];
 
-      var getRequests = hubIDS.map((hub,index) => {
+      var getRequests = hubIds.map((hub,index) => {
         var hubID = hub.id
     
           return axios.get(`https://api.tfl.gov.uk/StopPoint/${hubID}/`)
-    
-            // .then((data) => {
-            //   return filterHubIDS(data);
-            // })
       }) 
       
-      return [getRequests,normalHubIds]
+      return getRequests
     })
-    .then((array) =>{
-      var as = []
-      var hubGetRequest = array[0]
-      return axios.all(hubGetRequest)
+    .then((arrayOfGetReq) =>{
+    
+      return axios.all(arrayOfGetReq)
     })
-    .then((response) => {
-          console.log(response)
+    .then((arrayOfResults) => {
+          var results = arrayOfResults.map((item,index) =>{
+            var hubStations = filterHubIDS(item);
+            return hubStations
+          })
 
-      return response.map((item,index) => {
-      console.log(item);
-          console.log(filterHubIDS(item), index);
-      })
+          var results = [...results];
+          return results;
     })
-    .then((data) =>{
-        console.log(data);
+    .then((hubData) =>{
+      console.log(hubData)
+      
+      var mergedArray =  [...hubData,...normalIDS];
+      var flattendArray= [].concat.apply([],mergedArray)
+      console.log(mergedArray);
+      console.log(flattendArray)
+        this.setState({
+          stations:flattendArray,
+          error:false
+        })
       })
     .catch((error) => {
   		console.log(error);

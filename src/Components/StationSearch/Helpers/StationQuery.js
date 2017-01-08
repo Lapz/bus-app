@@ -74,4 +74,54 @@ function createHubStationUrl(hubID) {
 function getHubStationCodes(hubID) {
 	return axios.get(`https://api.tfl.gov.uk/StopPoint/${hubID}/`)
 }
+
+// // function getFormattedData(url){
+
+//      var normalIDS;
+//      var getMatches = axios.get(url);
+//      var matchesArrayByType = getMatches.then((response) => {  // [hubIDS, normalIDS
+//                 return completeMatches(response)         
+//      });
+//      var mappedHubArrayQuerys = matchesArrayByType.then((array)=>{
+//             var hubIds = array[0];
+//             normalIDS = array[1];
+//             var getRequests = hubIDS.map((hub,index) => {
+//                 var hubID = hub.id
+    
+//           return axios.get(`https://api.tfl.gov.uk/StopPoint/${hubID}/`)
+//       }) 
+//         return getRequests
+//      });
+
+//      var mappedHubArrayQuerysResults = mappedHubArrayQuerys.then((ArrayOfUrls)=>{
+//             return axios.all(ArrayOfUrls);
+//      });
+     
+// var QuerysResultsSorting = mappedHubArrayQuerysResults.then((response) =>{
+//          var results = response.map((item,index) => {
+//        var hubStations = filterHubIDS(item)
+//        return hubStations
+//     })
+
+//     var results = [...results];
+    
+//     return results
+// })
+
+// var mergedStationsData = QuerysResultsSorting.then((data) =>{
+//     var mergedArray = [...data,...normalIDS];
+
+//     var flattendArray = [].concat.apply([],mergedArray);
+
+//     return flattendArray
+
+// })
+
+// return mergedStationsData
+
+
+//  }
+
+// arrayOfGetReq
+
 export {createStationQueryUrl, createOutBoundUrl,getHubStationCodes,completeMatches,createHubStationUrl,filterHubIDS,hubIDStationRequest}
