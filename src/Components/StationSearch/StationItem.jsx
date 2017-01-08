@@ -11,16 +11,24 @@ class StationItem extends Component {
 			stationOutboundTrains: []
 		}
 	}
+
+
     render() {
+        var stationServices = this.props.stationServices.map((transportType,index) =>{
+            return(
+                <li key ={index}>
+                {transportType}
+                </li>
+            )
+        });
         return (
 
             <li>
                 <div onClick={this.handleClick}>
 
                     <h1>{this.props.stationName}</h1>
-
-                    <StationItemMoreDetail stationId={this.props.stationId} stationInfo = {this.state.stationInfor}/>
-
+                    <p>Methods of transport offered: </p>
+                        {stationServices}
                 </div>
 
             </li>
