@@ -4,7 +4,8 @@ import LineItem from './LineItem.jsx';
 import LineRefreshBtn from './LineRefreshBtn.jsx';
 import {Link} from 'react-router';
 import {getFormatedCurrentDate} from './Helpers/refreshTime';
-import './css/LineItem.css';
+import './css/LineItemContainer.css';
+
 
 class LineItemContainer extends Component {
   constructor(){
@@ -16,7 +17,7 @@ class LineItemContainer extends Component {
     }
   }
 	render() {
-    var desruptionReason;
+  
 
     if(this.state.trainLines){
       var lineList = this.state.trainLines;
@@ -24,9 +25,8 @@ class LineItemContainer extends Component {
       lineList  = lineList.map((item,index) => {
         
         if(item.lineStatuses[0].reason){
-          desruptionReason = item.lineStatuses[0].reason
           return(
-            <LineItem lineName={item.id} distruptionReason={desruptionReason} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
+            <LineItem lineName={item.id} distruptionReason={item.lineStatuses[0].reason} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
           )
         }
 
@@ -40,7 +40,7 @@ class LineItemContainer extends Component {
 		return (
 			<div className="wrapper">
       
-      <div className = "Header">
+      <div className = "refresh-wrapper">
         <LineRefreshBtn callRefresh = {this.callRefresh} refreshTime = {this.state.refreshTime}/>
         <Link to="/findStation"> Find Stations </Link>
       </div>

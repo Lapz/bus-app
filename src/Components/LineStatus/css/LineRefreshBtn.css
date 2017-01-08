@@ -1,6 +1,7 @@
 .btnWrapper {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .btnWrapper button {

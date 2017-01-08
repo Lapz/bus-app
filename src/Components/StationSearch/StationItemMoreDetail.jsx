@@ -1,15 +1,18 @@
 import React, {Component} from 'react';
 
-import StationItemMoreDetailInbound from './StationItemMoreDetailInbound';
-
-import StationItemMoreDetailOutbound from './StationItemMoreDetailOutbound';
 
 class StationItemMoreDetail extends Component {
 	render() {
 		return (
 			<div className="App">
-				<StationItemMoreDetailOutbound stationId = {this.props.stationId} />
-				<StationItemMoreDetailInbound />
+				<table>
+					<tr>
+					<th> Line </th>
+					<th> Platfrom </th>
+					<th> E.T.A </th>
+					</tr>
+
+				</table>
 
 			</div>
 		);

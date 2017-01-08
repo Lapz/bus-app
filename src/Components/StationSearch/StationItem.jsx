@@ -11,16 +11,27 @@ class StationItem extends Component {
 			stationOutboundTrains: []
 		}
 	}
+
+
     render() {
+        var stationServices = this.props.stationServices.map((transportType,index) =>{
+            return(
+                <li key ={index}>
+                {transportType}
+                </li>
+            )
+        });
         return (
 
             <li>
                 <div onClick={this.handleClick}>
 
                     <h1>{this.props.stationName}</h1>
-
-                    <StationItemMoreDetail stationId={this.props.stationId} stationInfo = {this.state.stationInfor}/>
-
+                    <p>Methods of transport offered: </p>
+                    <ul>
+                    {stationServices}
+                    </ul>
+                        
                 </div>
 
             </li>
@@ -31,14 +42,14 @@ class StationItem extends Component {
         //console.log(this.props.stationId);
     }
 
-		componentDidMount(){
-			var url = createOutBoundUrl(this.props.stationId);
-			console.log(url);
-	  axios.get(url)
-		.then((response)=>{
-			console.log(response.data)
-})
-}
+	componentDidMount() { 
+		var url = createOutBoundUrl(this.props.stationId);
+		console.log(url);
+	    axios.get(url)
+        .then((response)=>{
+            console.log(response.data)
+        })
+    }
 }
 
 export default StationItem;
