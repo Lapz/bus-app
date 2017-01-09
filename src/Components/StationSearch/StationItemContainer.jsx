@@ -9,7 +9,7 @@ class StationItemContainer  extends Component {
 
     stationsForList = stationsForList.map((item,index)=>{
         return(
-          <StationItem stationName={item.name || item.commonName} key={item.id} stationId={item.id} stationServices={item.modes}/>
+          <StationItem stationName={item.name || item.commonName} key={item.id} stationId={item.id} stationServices={item.modes} handleTimeTableClick={this.props.handleTimeTableClick}/>
         )
       })
     };

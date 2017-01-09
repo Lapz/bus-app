@@ -24,13 +24,16 @@ class StationItem extends Component {
         return (
 
             <li>
-                <div onClick={this.handleClick}>
+                <div>
 
                     <h1>{this.props.stationName}</h1>
                     <p>Methods of transport offered: </p>
                     <ul>
                     {stationServices}
                     </ul>
+
+                    <button onClick={this.handleClick}>Show incoming Train</button>
+
                         
                 </div>
 
@@ -39,7 +42,8 @@ class StationItem extends Component {
     }
 
     handleClick = (e) => {
-        //console.log(this.props.stationId);
+       console.log("More Info Clicked")
+       this.props.handleTimeTableClick(this.props.stationId);
     }
 
 	componentDidMount() { 
