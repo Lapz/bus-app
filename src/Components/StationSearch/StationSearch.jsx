@@ -3,7 +3,9 @@ import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import {
   createStationQueryUrl,
+  createArrivals,
   getHubStationCodes,
+  filterTrains,
   completeMatches,
   filterHubIDS,
   createHubStationUrl,
@@ -17,6 +19,8 @@ class StationSearch extends Component {
 
     this.state = {
       stations: [],
+      inboundTrains: [],
+      outboundTrains: [],
       error: false
     }
   }
@@ -39,7 +43,23 @@ class StationSearch extends Component {
 //////////// CUSTOM METHODS ////////////////////
   handleTimeTableClick = (stationId) => {
     console.log(stationId);
-    var url = createHubStationUrl(stationId);
+    var url = createArrivals(stationId);
+    axios.get(url)
+    .then((response) =>{
+      //console.log(response);
+      var newOutboundTrains,newInboundTrains;
+      
+      [newOutboundTrains, newInboundTrains] = filterTrains(response.data);
+      console.log(newInboundTrains,newOutboundTrains);
+      
+      this.setState({
+        inboundTrains:newInboundTrains,
+        outboundTrains:newOutboundTrains
+      })
+      
+      
+  
+    })
   }
 
   handleSubmitText = (text) => {
