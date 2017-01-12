@@ -4,13 +4,7 @@ import axios from 'axios';
 import {createOutBoundUrl} from './Helpers/StationQuery';
 
 class StationItem extends Component {
-	constructor() {
-		super()
 
-		this.state = {
-			stationOutboundTrains: []
-		}
-	}
 
 
     render() {
@@ -33,7 +27,7 @@ class StationItem extends Component {
                     </ul>
 
                     <button onClick={this.handleClick}>Show incoming Train</button>
-
+                    <StationItemMoreDetail  outboundTrains={this.props.outboundTrains} inboundTrains={this.props.inboundTrains} />
                         
                 </div>
 
@@ -46,14 +40,7 @@ class StationItem extends Component {
        this.props.handleTimeTableClick(this.props.stationId);
     }
 
-	componentDidMount() { 
-		var url = createOutBoundUrl(this.props.stationId);
-		console.log(url);
-	    axios.get(url)
-        .then((response)=>{
-            console.log(response.data)
-        })
-    }
+	
 }
 
 export default StationItem;

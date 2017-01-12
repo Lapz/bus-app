@@ -32,7 +32,7 @@ class StationSearch extends Component {
         <Link to="/">Tube Service Status</Link>
 
         {(this.state.error === false)
-          ? <StationItemContainer stationArray={this.state.stations} handleTimeTableClick={this.handleTimeTableClick}/>
+          ? <StationItemContainer stationArray={this.state.stations} handleTimeTableClick={this.handleTimeTableClick} inboundTrains={this.state.inboundTrains} outboundTrains={this.state.outboundTrains}/>
           : <p>
             Their was an error</p>
 }
