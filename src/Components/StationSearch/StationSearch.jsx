@@ -3,13 +3,8 @@ import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import {
   createStationQueryUrl,
-  createArrivals,
-  getHubStationCodes,
-  filterTrains,
   completeMatches,
   filterHubIDS,
-  createHubStationUrl,
-  hubIDStationRequest
 } from './Helpers/StationQuery';
 import StationItemContainer from './StationItemContainer.jsx'
 import {Link} from 'react-router';
@@ -19,8 +14,6 @@ class StationSearch extends Component {
 
     this.state = {
       stations: [],
-      inboundTrains: [],
-      outboundTrains: [],
       error: false
     }
   }
@@ -32,7 +25,7 @@ class StationSearch extends Component {
         <Link to="/">Tube Service Status</Link>
 
         {(this.state.error === false)
-          ? <StationItemContainer stationArray={this.state.stations} handleTimeTableClick={this.handleTimeTableClick} inboundTrains={this.state.inboundTrains} outboundTrains={this.state.outboundTrains}/>
+          ? <StationItemContainer stationArray={this.state.stations} />
           : <p>
             Their was an error</p>
 }
@@ -41,26 +34,7 @@ class StationSearch extends Component {
     )
   }
 //////////// CUSTOM METHODS ////////////////////
-  handleTimeTableClick = (stationId) => {
-    console.log(stationId);
-    var url = createArrivals(stationId);
-    axios.get(url)
-    .then((response) =>{
-      //console.log(response);
-      var newOutboundTrains,newInboundTrains;
-      
-      [newOutboundTrains, newInboundTrains] = filterTrains(response.data);
-      console.log(newInboundTrains,newOutboundTrains);
-      
-      this.setState({
-        inboundTrains:newInboundTrains,
-        outboundTrains:newOutboundTrains
-      })
-      
-      
   
-    })
-  }
 
   handleSubmitText = (text) => {
     console.log(text);

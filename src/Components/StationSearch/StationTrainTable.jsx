@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import StationTimeTableRow from './StationTimeTableRow.jsx';
 
-class StationItemMoreDetail extends Component {
-	render() {
-		
-		var inboundTrainsRows = this.props.inboundTrains;
+class StationTrainTable extends Component {
+    render(){
+    var inboundTrainsRows = this.props.inboundTrains;
 		inboundTrainsRows = inboundTrainsRows.map((rowData,index) =>{
 			return(
 				<StationTimeTableRow key= {index} eta={Math.round((rowData.timeToStation/60))} platformName = {rowData.platformName} line={rowData.lineName} />
@@ -18,22 +17,13 @@ class StationItemMoreDetail extends Component {
 				<StationTimeTableRow key= {index} eta={Math.round((rowData.timeToStation/60))} platformName = {rowData.platformName} line={rowData.lineName} />
 				)
 		}).slice(0,5);
+
+
+        console.log(outboundTrainsRows);
 		
-		console.log(outboundTrainsRows)
-		{/*
-		
-		
-		
-		
-		var outboundTrainsRows = outboundTrains.map((rowData,index) =>{
-			return(
-				<StationTimeTableRow key= {index} eta={rowData.timeToStation} platformName = {rowData.platformName} line={rowData.lineName} />
-				)
-		})
-		*/}
-		
-		return (
-			<div className="App">
+
+        return (
+            <div className="App">
 				<table>
 					<thead>
 						<tr>
@@ -61,8 +51,9 @@ class StationItemMoreDetail extends Component {
 				
 
 			</div>
-		);
-	}
+        )
+    }
+
 }
 
-export default StationItemMoreDetail
+export default StationTrainTable

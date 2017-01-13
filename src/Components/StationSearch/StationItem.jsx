@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
-import StationItemMoreDetail from './StationItemMoreDetail.jsx';
+import StationTrainTable from './StationTrainTable.jsx';
 import axios from 'axios';
-import {createOutBoundUrl} from './Helpers/StationQuery';
+import {createArrivals,filterTrains} from './Helpers/StationQuery';
+
 
 class StationItem extends Component {
-
+    constructor(){
+        super()
+        this.state= {
+            inboundTrains:[],
+            outboundTrains:[]
+        }
+    }
 
 
     render() {
@@ -15,6 +22,7 @@ class StationItem extends Component {
                 </li>
             )
         });
+
         return (
 
             <li>
@@ -26,8 +34,8 @@ class StationItem extends Component {
                     {stationServices}
                     </ul>
 
-                    <button onClick={this.handleClick}>Show incoming Train</button>
-                    <StationItemMoreDetail  outboundTrains={this.props.outboundTrains} inboundTrains={this.props.inboundTrains} />
+                    <button onClick={this.handleTimeTableClick(this.props.stationId)}>Show incoming Train</button>
+                    <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} />
                         
                 </div>
 
@@ -35,10 +43,29 @@ class StationItem extends Component {
         );
     }
 
-    handleClick = (e) => {
-       console.log("More Info Clicked")
-       this.props.handleTimeTableClick(this.props.stationId);
-    }
+    handleTimeTableClick = (stationId) => {
+  
+
+    console.log("click");
+    console.log(stationId);
+    var url = createArrivals(stationId);
+    console.log(url);
+    axios.get(url)
+    .then((response) =>{
+      //console.log(response);
+      var newOutboundTrains,newInboundTrains;
+      
+      [newOutboundTrains, newInboundTrains] = filterTrains(response.data);
+      console.log(newInboundTrains,newOutboundTrains);
+      
+      this.setState({
+        inboundTrains:newInboundTrains,
+        outboundTrains:newOutboundTrains
+      })
+
+    })
+  }
+    
 
 	
 }
