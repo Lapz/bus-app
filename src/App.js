@@ -3,7 +3,7 @@ import './App.css';
 
 
 
-import {Router, Route, browserHistory} from 'react-router';
+import {Router, Route, hashHistory} from 'react-router';
 import StationSearch from './Components/StationSearch/StationSearch.jsx';
 import LineStatus from './Components/LineStatus/LineItemContainer.jsx'
 
