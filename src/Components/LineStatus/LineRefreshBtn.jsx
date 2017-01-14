@@ -5,12 +5,12 @@ class LineRefreshBtn extends Component {
     
     render() {
         return(
-        <div className = "btnWrapper"> 
+        <div className="btnWrapper"> 
          {
                 (this.props.refreshTime) ?<p>The last refresh Date was the {this.props.refreshTime}</p> :<p></p>
             }
             
-            <button onClick = {this.handleClick}>Refresh</button>
+            <button onClick={this.handleClick}>Refresh</button>
            
             
         </div>

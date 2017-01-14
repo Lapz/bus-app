@@ -7,6 +7,7 @@ class StationTimeTableRow extends Component {
                 <tr> 
                 <td>{this.props.line}</td>
                 <td>{this.props.platformName}</td>
+                <td>{this.props.destination}</td>
                 <td>{this.props.eta} minutes </td>
                </tr>
             

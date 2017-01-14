@@ -72,7 +72,7 @@ class StationSearch extends Component {
           return hubStations
         })
 
-        var results = [...results];
+        results = [...results];
         return results;
       })
       .then((hubData) => {

@@ -7,7 +7,7 @@ import {createArrivals,filterTrains} from './Helpers/StationQuery';
 class StationItem extends Component {
     constructor(){
         super()
-        this.state= {
+        this.state = {
             inboundTrains:[],
             outboundTrains:[]
         }
@@ -17,7 +17,7 @@ class StationItem extends Component {
     render() {
         var stationServices = this.props.stationServices.map((transportType,index) =>{
             return(
-                <li key ={index}>
+                <li key={index}>
                 {transportType}
                 </li>
             )
@@ -34,21 +34,38 @@ class StationItem extends Component {
                     {stationServices}
                     </ul>
 
-                    <button onClick={this.handleTimeTableClick(this.props.stationId)}>Show incoming Train</button>
-                    <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} />
+                    <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} />
                         
                 </div>
 
             </li>
         );
     }
+    /// Stop the rerender ///
+    componentDidMount(){
+    var url = createArrivals(this.props.stationId);
+    console.log(url);
+    axios.get(url)
+    .then((response) =>{
+      //console.log(response);
+      var newOutboundTrains,newInboundTrains;
+      
+      [newOutboundTrains, newInboundTrains] = filterTrains(response.data);
+      console.log(newInboundTrains,newOutboundTrains);
+      
+      this.setState({
+        inboundTrains:newInboundTrains,
+        outboundTrains:newOutboundTrains
+      })
 
-    handleTimeTableClick = (stationId) => {
-  
+    })
+    }
+
+    handleTimeTableClick = () => {
 
     console.log("click");
-    console.log(stationId);
-    var url = createArrivals(stationId);
+   // console.log(stationId);
+    var url = createArrivals(this.props.stationId);
     console.log(url);
     axios.get(url)
     .then((response) =>{
