@@ -10,41 +10,41 @@ function getFormatedCurrentDate() {
 function getColourCode(stationName){
     switch(stationName){
         case "Bakerloo":
-            return "#894E24"
-            break; 
+            return "#894E24";
+          
         case "Central":
-            return "#DC241F"
-            break;
+            return "#DC241F";
+           
         case "Circle":
             return "#FFCE00"
-            break;
+       
         case  "District":
             return "#007229"
-            break;
+           
         case "Hammersmith & City":
             return "#D087A1"
-            break;
+           
         case "Jubilee":
             return "#6A7278"
-            break;
+           
         case "Metropolitan":
             return "#751056"
-            break;
+           
         case "Northern":
             return "#000000"
-            break;
+           
         case "Piccadilly":
             return "#00158F"
-            break;
+           
         case "Victoria":
-        return "#00A0E2"
-            break;
+            return "#00A0E2"
+            
         case "Waterloo & City":
             return "#76D0BD"
-            break;
+            
         default:
             return ""
-            break;
+           
     }
     
 }
