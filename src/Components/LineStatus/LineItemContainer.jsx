@@ -40,13 +40,13 @@ class LineItemContainer extends Component {
 		return (
 			<div className="wrapper">
       
-      <div className = "refresh-wrapper">
-        <LineRefreshBtn callRefresh = {this.callRefresh} refreshTime = {this.state.refreshTime}/>
+      <div className="refresh-wrapper">
+        <LineRefreshBtn callRefresh={this.callRefresh} refreshTime={this.state.refreshTime}/>
         <Link to="/findStation"> Find Stations </Link>
       </div>
     
     {
-        (this.state.error === false ) ? <div className = "lineList"><ul>{lineList} </ul></div> :<p> Their was an error </p>
+        (this.state.error === false ) ? <div className="lineList"><ul>{lineList} </ul></div> :<p> Their was an error </p>
       }
         
 			</div>

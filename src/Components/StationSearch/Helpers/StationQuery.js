@@ -65,6 +65,10 @@ function hubIDStationRequest(hubIDSArray) {
 function createStationQueryUrl(query) {
 	return `https://api.tfl.gov.uk/Stoppoint/search/${query}?modes=tube`;
 }
+
+function createArrivals(stationID){
+	return `https://api.tfl.gov.uk/StopPoint/${stationID}/Arrivals?mode=tube`
+}
 function createOutBoundUrl(id) {
 	return `https://api.tfl.gov.uk/StopPoint/${id}/`
 }
@@ -75,6 +79,17 @@ function getHubStationCodes(hubID) {
 	return axios.get(`https://api.tfl.gov.uk/StopPoint/${hubID}/`)
 }
 
+function filterTrains(trainArray) {
+	var outBoundStations = trainArray.filter((train) =>{
+		return train.direction === "outbound";
+		});
+	var inBoundStations = trainArray.filter((train) => {
+		return train.direction === "inbound"
+	})
+	
+	return [outBoundStations,inBoundStations];
+}
+	
 // // function getFormattedData(url){
 
 //      var normalIDS;
@@ -124,4 +139,4 @@ function getHubStationCodes(hubID) {
 
 // arrayOfGetReq
 
-export {createStationQueryUrl, createOutBoundUrl,getHubStationCodes,completeMatches,createHubStationUrl,filterHubIDS,hubIDStationRequest}
+export {createStationQueryUrl, createOutBoundUrl,filterTrains,getHubStationCodes,completeMatches,createHubStationUrl,createArrivals,filterHubIDS,hubIDStationRequest}
