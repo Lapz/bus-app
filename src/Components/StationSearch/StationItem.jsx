@@ -9,7 +9,8 @@ class StationItem extends Component {
         super()
         this.state = {
             inboundTrains:[],
-            outboundTrains:[]
+            outboundTrains:[],
+            error:false
         }
     }
 
@@ -34,7 +35,9 @@ class StationItem extends Component {
                     {stationServices}
                     </ul>
 
-                    <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} />
+        {(this.state.error === false )? ( <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} />):(<div><p>An error ocurred </p> <button onClick={this.handleTimeTableClick}> Retry </button></div>)}
+
+                   
                         
                 </div>
 
@@ -55,7 +58,8 @@ class StationItem extends Component {
       
       this.setState({
         inboundTrains:newInboundTrains,
-        outboundTrains:newOutboundTrains
+        outboundTrains:newOutboundTrains,
+        error:false
       })
 
     })
@@ -77,9 +81,16 @@ class StationItem extends Component {
       
       this.setState({
         inboundTrains:newInboundTrains,
-        outboundTrains:newOutboundTrains
+        outboundTrains:newOutboundTrains,
+        error:false
       })
 
+    })
+    .catch((error) =>{
+    console.log(error);
+    this.setState({
+        error:true
+    })
     })
   }
     

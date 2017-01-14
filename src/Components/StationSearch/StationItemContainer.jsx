@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import StationItem from './StationItem.jsx';
+import './css/StationItemContainer.css';
 
 class StationItemContainer  extends Component {
 
@@ -16,7 +17,7 @@ class StationItemContainer  extends Component {
     };
 
 		return (
-			<div className="stationItems">
+			<div className="station-items">
         <ul>
             {stationsForList}
         </ul>
