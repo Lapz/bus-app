@@ -46,7 +46,7 @@ class LineItemContainer extends Component {
       </div>
     
     {
-        (this.state.error === false ) ? <div className="lineList"><ul>{lineList} </ul></div> :<p> Their was an error </p>
+        (this.state.error === false ) ? <div className="lineList"><ul>{lineList} </ul></div> :(<p> Their was an error </p>)
       }
         
 			</div>

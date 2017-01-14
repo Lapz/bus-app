@@ -9,7 +9,8 @@ class StationItem extends Component {
         super()
         this.state = {
             inboundTrains:[],
-            outboundTrains:[]
+            outboundTrains:[],
+            error:false
         }
     }
 
@@ -34,7 +35,10 @@ class StationItem extends Component {
                     {stationServices}
                     </ul>
 
-                    <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} />
+                    {(this.state.error === false)? <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} /> : (
+                        <p> Their was a network error </p>
+                    )}
+                       
                         
                 </div>
 
@@ -55,9 +59,16 @@ class StationItem extends Component {
       
       this.setState({
         inboundTrains:newInboundTrains,
-        outboundTrains:newOutboundTrains
+        outboundTrains:newOutboundTrains,
+        error:false
       })
 
+    })
+    .catch((error) =>{
+        console.log(error);
+        this.setState({
+            error:true
+        })
     })
     }
 
@@ -80,6 +91,12 @@ class StationItem extends Component {
         outboundTrains:newOutboundTrains
       })
 
+    })
+    .catch((error) =>{
+        console.log(error);
+        this.setState({
+            error:true
+        })
     })
   }
     
