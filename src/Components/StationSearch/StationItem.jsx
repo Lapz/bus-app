@@ -38,6 +38,7 @@ class StationItem extends Component {
         {(this.state.error === false )? ( <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} />):(<div><p>An error ocurred </p> <button onClick={this.handleTimeTableClick}> Retry </button></div>)}
 
                    
+                 
                         
                 </div>
 
@@ -63,6 +64,12 @@ class StationItem extends Component {
       })
 
     })
+    .catch((error) =>{
+        console.log(error);
+        this.setState({
+            error:true
+        })
+    })
     }
 
     handleTimeTableClick = () => {
@@ -87,10 +94,12 @@ class StationItem extends Component {
 
     })
     .catch((error) =>{
+
     console.log(error);
     this.setState({
         error:true
     })
+
     })
   }
     
