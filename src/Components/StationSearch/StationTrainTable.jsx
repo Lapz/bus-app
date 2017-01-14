@@ -26,7 +26,7 @@ class StationTrainTable extends Component {
         return (
             <div className="App">
 
-					<button onClick={this.handleTimeTableRefresh}>Show incoming Train</button>
+					<button onClick={this.handleTimeTableRefresh}>Refresh Incoming Trains</button>
 				<table>
 					<thead>
 						<tr>

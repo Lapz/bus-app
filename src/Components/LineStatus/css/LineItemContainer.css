@@ -1,19 +1,29 @@
-.lineList p {
-    color: #000;
-    font-style: italic;
-}
 
-#title {
-     text-transform: capitalize;
-}
 
 .lineList ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    
 }
 
-.lineList ul li:hover{
-  background-color: lightblue;
+
+
+.lineList ul li {
+    display: flex;
+    border-bottom:2px solid #ccc;
+   
+}
+
+.lineList ul li div {
+    flex-grow: 1;
+}
+
+
+
+.lineList ul li p {
+    padding:5px;
+    color: white;
 }
 
 .refresh-wrapper {

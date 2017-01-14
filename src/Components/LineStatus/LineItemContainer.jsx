@@ -26,12 +26,12 @@ class LineItemContainer extends Component {
         
         if(item.lineStatuses[0].reason){
           return(
-            <LineItem lineName={item.id} distruptionReason={item.lineStatuses[0].reason} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
+            <LineItem lineName={item.name} distruptionReason={item.lineStatuses[0].reason} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
           )
         }
 
           return(
-            <LineItem lineName={item.id} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
+            <LineItem lineName={item.name} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>
           )
 
       })
