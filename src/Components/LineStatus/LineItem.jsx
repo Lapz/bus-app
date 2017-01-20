@@ -10,12 +10,7 @@ class LineItem extends Component {
     var liStyle = {
     background:getColourCode(this.props.lineName),
   }
-
-  console.log(liStyle.background)
   
-
-  
-
     if(this.props.distruptionReason){
       var distruptionReason = this.props.distruptionReason.split(":")[1];
       return (

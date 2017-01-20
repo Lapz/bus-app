@@ -12,6 +12,7 @@ class App extends Component {
   render() {
     return (
       <Router history={hashHistory}>
+      
       <Route path={'/'} component={LineStatus}></Route>
       <Route path={'/findStation'} component={StationSearch}></Route>
       </Router>
