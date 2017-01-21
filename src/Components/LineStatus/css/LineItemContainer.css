@@ -17,6 +17,7 @@
 
 .lineList ul li div {
     flex-grow: 1;
+    flex-basis: 400px;
 }
 
 

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import LineItem from './LineItem.jsx';
 import LineRefreshBtn from './LineRefreshBtn.jsx';
-import {Link} from 'react-router';
 import {getFormatedCurrentDate} from './Helpers/refreshTime';
 import './css/LineItemContainer.css';
 

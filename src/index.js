@@ -5,6 +5,17 @@ import './index.css';
 import {Router, Route, hashHistory} from 'react-router';
 import StationSearch from './Components/StationSearch/StationSearch.jsx';
 import LineStatus from './Components/LineStatus/LineItemContainer.jsx';
+import Favourite from './Components/Favourites/Favourites.jsx';
+import * as firebase from 'firebase';
+
+var config = {
+  apiKey:process.env.REACT_APP_apiKey,
+  authDomain:process.env.REACT_APP_authDomain,
+  databaseURL:process.env.REACT_APP_databaseURL,
+  storageBucket:process.env.REACT_APP_storageBucket
+}
+
+firebase.initializeApp(config)
 
 class Index extends Component {
   render() {
@@ -13,6 +24,7 @@ class Index extends Component {
     <Route component={App}>
         <Route path={'/'} component={LineStatus}></Route>
         <Route path={'/findStation'} component={StationSearch}></Route>
+        <Route path="favourites" component={Favourite}></Route>
       </Route>
      
       </Router>

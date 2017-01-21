@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-// import SearchBarButton from './SearchBarButton.jsx';
-// import SearchBarInput from './SearchBarInput.jsx';
-
 
 class SearchBar extends Component{
   render(){
