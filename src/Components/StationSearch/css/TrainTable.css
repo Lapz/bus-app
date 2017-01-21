@@ -1,0 +1,11 @@
+.table-wrapper table{
+      /*width: 80%;*/
+      margin: 0 auto;
+      padding: 20px;
+}
+
+
+.table-wrapper button {
+   display: block;
+    justify-content: flex-end;
+}

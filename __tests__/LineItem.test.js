@@ -26,6 +26,10 @@ global.navigator = {
         expect(wrapper.find('li').length).toBe(1)
     });
 
+    it("renders without a problem", () =>{
+        expect(LineItem).to.exist;
+    });
+
     it('should render 2 divs', ()=>{
         const wrapper = shallow(<LineItem />);
         expect(wrapper.find('div').length).toBe(2)

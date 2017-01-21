@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import StationTimeTableRow from './StationTimeTableRow.jsx';
-
+import './css/TrainTable.css';
 class StationTrainTable extends Component {
     render(){
     var inboundTrainsRows = this.props.inboundTrains;
@@ -24,7 +24,7 @@ class StationTrainTable extends Component {
 	
 
         return (
-            <div className="App">
+            <div className="table-wrapper">
 
 					<button onClick={this.handleTimeTableRefresh}>Refresh Incoming Trains</button>
 				<table>

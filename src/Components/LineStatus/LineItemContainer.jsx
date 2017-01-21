@@ -42,7 +42,6 @@ class LineItemContainer extends Component {
       
       <div className="refresh-wrapper">
         <LineRefreshBtn callRefresh={this.callRefresh} refreshTime={this.state.refreshTime}/>
-        <Link to="/findStation"> Find Stations </Link>
       </div>
     
     {
