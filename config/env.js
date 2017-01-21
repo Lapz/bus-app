@@ -4,11 +4,11 @@
 var REACT_APP = /^REACT_APP_/i;
 
 
-REACT_APP_apiKey ="AIzaSyBFNIT_6weReQZa_6HM74xFVbDtmHdXhXw",
-REACT_APP_authDomain = "trainviewer-1ce18.firebaseapp.com",
-REACT_APP_databaseURL="https://trainviewer-1ce18.firebaseio.com",
-REACT_APP_storageBucket="trainviewer-1ce18.appspot.com",
-REACT_APP_messagingSenderId="142649253199"
+REACT_APP_apiKey ="AIzaSyBFNIT_6weReQZa_6HM74xFVbDtmHdXhXw";
+REACT_APP_authDomain = "trainviewer-1ce18.firebaseapp.com";
+REACT_APP_databaseURL="https://trainviewer-1ce18.firebaseio.com";
+REACT_APP_storageBucket="trainviewer-1ce18.appspot.com";
+REACT_APP_messagingSenderId="142649253199";
 
 
 function getClientEnvironment(publicUrl) {
