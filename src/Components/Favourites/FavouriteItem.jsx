@@ -4,7 +4,7 @@ class FavouriteItem extends Component {
     render() {
         var serviceItem = this.props.services.map((service,index)=>{
             return(
-                <li>
+                <li key={index}>
                     {service}
                 </li>
             )
@@ -12,7 +12,7 @@ class FavouriteItem extends Component {
 
         var transportItems = this.props.methods.map((service,index)=>{
             return(
-                <li>
+                <li key={index}>
                     {service}
                 </li>
             )
@@ -20,16 +20,16 @@ class FavouriteItem extends Component {
         return (
             <div>
                 <p> Station Name: {this.props.name}</p>
-                <p> Services offered:
+                <p> Services offered:</p>
                 <ul>
                 {serviceItem}
                 </ul>
-                </p>
-                <p> Methods of transport offered
+                
+                <p> Methods of transport offered</p>
                 <ul>
                 {transportItems}
                 </ul>
-                </p>
+                
             </div>
         );
     }

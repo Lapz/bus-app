@@ -1,35 +1,39 @@
 import React, {Component} from 'react';
 import FavouritesItem from './FavouriteItem'
 import * as firebase from 'firebase';
+
 class FavouritesContainer extends Component {
     constructor() {
         super();
         this.state = {
-            number:15
+            speed:16
         }
     }
-    
+
     render() {
         return (
             <div className="wrapper">
-                {this.state.number}
+                <p>{this.state.speed}</p>
                 <FavouritesItem  name={"Acton"} services={["ticket","helpers","refunds"]} methods={["tube","train"]}/>
             </div>
         );
     }
 
-    componentDidMount() {
 
-        console.log(process.env.REACT_APP_apiKey)
-        const rootRef = firebase.database().ref().child("favourites");
-        const trainRef = rootRef.child("acton");
+    componentDidMount() {
+        const rootRef = firebase.database().ref().child("react");
+        const speedRef = rootRef.child("speed");
         
-        trainRef.on('value', snap =>{
+        speedRef.on('value', (snapshot) =>{
+
             this.setState({
-                number: snap.val()
+               speed: snapshot.val()
             })
         })
     }
+    
+
+    
     
 }
 
