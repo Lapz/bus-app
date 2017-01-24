@@ -13,7 +13,7 @@ class FavouritesContainer extends Component {
     render() {
         return (
             <div className="wrapper">
-                <p>{this.state.speed}</p>
+                
                 <FavouritesItem  name={"Acton"} services={["ticket","helpers","refunds"]} methods={["tube","train"]}/>
             </div>
         );
