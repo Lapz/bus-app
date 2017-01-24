@@ -31,13 +31,12 @@ function filterHubIDS(hubData) {
 	return tubeIds
 }
 function hubIDStationRequest(hubIDSArray) {
-	var data ;
 	var hubUrls =  hubIDSArray.forEach((hubData) =>{
 	var hubReqUrl = createHubStationUrl(hubData.id);
 	return axios.get(hubReqUrl)
 	
-	
  })
+ return hubUrls
 }
 
 
