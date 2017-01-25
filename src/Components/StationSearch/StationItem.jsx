@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import StationTrainTable from './StationTrainTable.jsx';
+import StationFavouriteButton from './StationFavouriteButton.jsx';
 import axios from 'axios';
 import {createArrivals,filterTrains} from './Helpers/StationQuery';
 import Star from './img/star.svg';
-import * as firebase from 'firebase';
 
 class StationItem extends Component {
     constructor(){
@@ -30,7 +30,7 @@ class StationItem extends Component {
             <li>
                 <div>
 
-                    <h1>{this.props.stationName} <img src={Star} alt="log" onClick={this.addFavourite}/></h1>
+                    <h1>{this.props.stationName} <StationFavouriteButton  stationId={this.props.stationId} stationName={this.props.stationName}/></h1>
                     <p>Methods of transport offered: </p>
                     <ul>
                     {stationServices}
@@ -73,18 +73,6 @@ class StationItem extends Component {
     })
     }
 
-
-addFavourite = ()=> {
-
-   var database = firebase.database()
-   var rootRef = database.ref().child("users/lenard")
-
-   var usersFavouritesRefs = rootRef.child("favouriteStations");
-
- usersFavouritesRefs.push({
-      [this.props.stationName]:this.props.stationId  
-    })
-}
 
 
 

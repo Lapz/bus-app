@@ -62,20 +62,20 @@ function hubIDStationRequest(hubIDSArray) {
 
 
 function createStationQueryUrl(query) {
-	return `https://api.tfl.gov.uk/Stoppoint/search/${query}?modes=tube`;
+	return `https://api.tfl.gov.uk/Stoppoint/search/${query}?modes=tube&app_id=044b678c&app_key=0fd6b1cdde6667304869f5245f334c5e`;
 }
 
 function createArrivals(stationID){
-	return `https://api.tfl.gov.uk/StopPoint/${stationID}/Arrivals?mode=tube`
+	return `https://api.tfl.gov.uk/StopPoint/${stationID}/Arrivals?mode=tube&app_id=044b678c&app_key=0fd6b1cdde6667304869f5245f334c5e`
 }
 function createOutBoundUrl(id) {
-	return `https://api.tfl.gov.uk/StopPoint/${id}/`
+	return `https://api.tfl.gov.uk/StopPoint/${id}?app_id=044b678c&app_key=0fd6b1cdde6667304869f5245f334c5e`
 }
 function createHubStationUrl(hubID) {
-		return `https://api.tfl.gov.uk/StopPoint/${hubID}/`
+		return `https://api.tfl.gov.uk/StopPoint/${hubID}?app_id=044b678c&app_key=0fd6b1cdde6667304869f5245f334c5e`
 }
 function getHubStationCodes(hubID) {
-	return axios.get(`https://api.tfl.gov.uk/StopPoint/${hubID}/`)
+	return axios.get(`https://api.tfl.gov.uk/StopPoint/${hubID}?app_id=044b678c&app_key=0fd6b1cdde6667304869f5245f334c5e`)
 }
 
 function filterTrains(trainArray) {
