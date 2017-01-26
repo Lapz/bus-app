@@ -2,7 +2,7 @@ import React, { Component }from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import {Router, Route, hashHistory} from 'react-router';
+import {Router, Route, browserHistory} from 'react-router';
 
 // App Components
 import StationSearch from './Components/StationSearch/StationSearch.jsx';
@@ -26,7 +26,7 @@ firebase.initializeApp(config);
 class Index extends Component {
   render() {
     return (
-    <Router history={hashHistory}>
+    <Router history={browserHistory}>
     <Route component={App}>
         <Route path={'/'} component={LineStatus}></Route>
         <Route path={'/findStation'} component={StationSearch}></Route>
