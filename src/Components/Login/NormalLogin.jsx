@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as firebase from 'firebase';
 import './css/normalLogin.css';
 import ErrorModal from './ErrorModal.jsx';
-import {Router,browserHistory} from 'react-router';
+
 
 class NormalLogin extends Component {
 
@@ -60,9 +60,9 @@ class NormalLogin extends Component {
         var authPromise = firebase.auth().signInWithEmailAndPassword(email,password)
 
         authPromise.then(()=>{
-            Router.push('/');
-            console.log("shit")
-                
+            
+            
+            
         })
         .catch((e)=>{
 

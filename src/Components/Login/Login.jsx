@@ -8,7 +8,7 @@ class Login extends Component {
         return (
             <div className="wrapper">
                 <GoogleLogin />
-                <NormalLogin />
+                <NormalLogin router={this.props.router}/>
             </div>
         );
     }
