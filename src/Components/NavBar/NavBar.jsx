@@ -11,6 +11,7 @@ class NavBar extends Component {
                     <li><Link to="/findStation">Search For a stations </Link></li>
                     <li><Link to="/">Train Status</Link></li>
                     <li><Link to="/favourites">Favourites</Link></li>
+                    <li><Link to="/login">Login</Link></li>
                 </ul>
              </nav>
         </div>
