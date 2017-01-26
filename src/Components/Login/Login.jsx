@@ -6,7 +6,7 @@ import NormalLogin from './NormalLogin.jsx';
 class Login extends Component {
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <GoogleLogin />
                 <NormalLogin />
             </div>

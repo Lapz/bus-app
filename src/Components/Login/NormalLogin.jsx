@@ -1,21 +1,39 @@
 import React, {Component} from 'react';
 import * as firebase from 'firebase';
 import './css/normalLogin.css';
-
+import ErrorModal from './ErrorModal.jsx'
 class NormalLogin extends Component {
+
+
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            error:false,
+            sucesse:false
+        }
+    }
+     //{(this.state.error ===true) ? (<ErrorModal modalClosedButtonPressed = {this.modalClosedButtonPressed} errorMessage={this.state.errorMessage}/>) : ("")}
     render() {
         return (
             
-            <div className= "wrapper">
-
+        <form>
+        {(this.state.error ===true) ? (<ErrorModal modalClosedButtonPressed = {this.modalClosedButtonPressed} errorMessage={this.state.errorMessage}/>) : ("")}
+         
                 <div className="input-wrapper">
-                <label>Email</label>
-                    <input id="txtEmail" type="email" placeholder="Email" ref="userEmail"/>
-                <label>Password</label>
-                    <input id="txtPassword" type="password" placeholder="Password" ref="userPassword"/>
+                            <label htmlFor="txtEmail"> 
+                                Email
+                              <input id="txtEmail" type="email" placeholder="Email" ref="userEmail" required/>
+                            </label>
+                          
+
+                            <label htmlFor="txtPassword">
+                                Password
+                                <input id="txtPassword" type="password" placeholder="Password" ref="userPassword"/>
+                            </label>
+                            
+                        
                 </div>
-
-
         <div className="signup-btns">
                 <button id="loginBtn" className="login-btn" onClick={this.login}>
                      Log input
@@ -25,10 +43,11 @@ class NormalLogin extends Component {
                     Sign Up
                  </button>
             </div>
-        </div>
+       </form>
+        
+        )}
+       
     
-        );
-    }
 
     login = (e)=> {
         e.preventDefault()
@@ -39,7 +58,12 @@ class NormalLogin extends Component {
         var authPromise = firebase.auth().signInWithEmailAndPassword(email,password)
 
         authPromise.catch((e)=>{
+
             console.log(e.message);
+            this.setState({
+                 error:true,
+                 errorMessage: e.message
+             })
         })
     }
 
@@ -52,8 +76,18 @@ class NormalLogin extends Component {
 
         authPromise.catch((e)=>{
             console.log(e.message);
+             this.setState({
+                 error:true,
+                 errorMessage: e.message
+             })
         })
 
+    }
+
+    modalClosedButtonPressed = () => {
+        this.setState({
+            error:false
+        })
     }
 
 }
