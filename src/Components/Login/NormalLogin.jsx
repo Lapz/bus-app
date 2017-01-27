@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import * as firebase from 'firebase';
 import './css/normalLogin.css';
-import ErrorModal from './ErrorModal.jsx';
-
+import {browserHistory} from 'react-router';
 
 class NormalLogin extends Component {
 
@@ -11,42 +10,35 @@ class NormalLogin extends Component {
         super(props);
         
         this.state = {
-            error:false,
-            sucesse:false
+            error:false
+           
         }
     }
-     //{(this.state.error ===true) ? (<ErrorModal modalClosedButtonPressed = {this.modalClosedButtonPressed} errorMessage={this.state.errorMessage}/>) : ("")}
     render() {
         return (
-            
-        <form>
-        {(this.state.error ===true) ? (<ErrorModal modalClosedButtonPressed = {this.modalClosedButtonPressed} errorMessage={this.state.errorMessage}/>) : ("")}
-         
-                <div className="input-wrapper">
-                            <label htmlFor="txtEmail"> 
-                                Email
-                              <input id="txtEmail" type="email" placeholder="Email" ref="userEmail" required/>
-                            </label>
-                          
+    <div className="container">
+        <form className="form-wrapper">
+         <ul  className="flex-outer">
+            <li>
+                <label htmlFor="txtEmail"> Email</label>
+                <input id="txtEmail" type="email" placeholder="Email" ref="userEmail" required/>
+            </li>
 
-                            <label htmlFor="txtPassword">
-                                Password
-                                <input id="txtPassword" type="password" placeholder="Password" ref="userPassword"/>
-                            </label>
-                            
-                        
-                </div>
-        <div className="signup-btns">
-                <button id="loginBtn" className="login-btn" onClick={this.login}>
-                     Log input
-                </button>
+            <li>
+                <label htmlFor="txtPassword">Password</label>
+                <input id="txtPassword" type="password" placeholder="Password" ref="userPassword"/>   
+            </li>
 
-                 <button id="signUpBtn" className="signUp-btn" onClick={this.signup}>
-                    Sign Up
-                 </button>
-            </div>
+            <li>
+                <button id="loginBtn" className="login-btn" onClick={this.login}>Login</button>
+            </li>
+
+           {/* <li>
+                <button id="signUpBtn" className="signUp-btn" onClick={this.signup}>Sign Up</button>
+            </li>*/}
+        </ul>
        </form>
-        
+        </div>
         )}
        
     
@@ -60,25 +52,20 @@ class NormalLogin extends Component {
         var authPromise = firebase.auth().signInWithEmailAndPassword(email,password)
 
         authPromise.then(()=>{
-            
-            
+            setTimeout(()=>{
+                browserHistory.push("/");
+            },3000)
+           
             
         })
         .catch((e)=>{
 
             console.log(e.message);
-            this.setState({
-                 error:true,
-                 errorMessage: e.message
-             })
+            this.props.errorModalTrigger(e.message);
         })
     }
 
-   modalClosedButtonPressed = () => {
-        this.setState({
-            error:false
-        })
-    }
+   
 }
 
 export default NormalLogin;

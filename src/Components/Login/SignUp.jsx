@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import * as firebase from 'firebase';
-import ErrorModal from './ErrorModal.jsx';
+import {browserHistory} from 'react-router';
+import './css/normalLogin.css';
+
 
 class SignUp extends Component {
     
@@ -9,47 +11,39 @@ class SignUp extends Component {
         super(props);
         
         this.state = {
-            error:false,
-            sucesse:false
+            error:false
+        
         }
     }
     render() {
         return (
             <form>
-        {(this.state.error ===true) ? (<ErrorModal modalClosedButtonPressed = {this.modalClosedButtonPressed} errorMessage={this.state.errorMessage}/>) : ("")}
          
-                <div className="input-wrapper">
-                        <label htmlFor="firstName">
-                            FirstName
-                            <input id="firstName" type="txt" placeholder="e.g. John" ref="userFirstName" required/>
-                        </label>
-                        
-                        <label htmlFor="lastName">
-                        Surname
-                        <input id="lastName" type="txt" placeholder="e.g. AppleSeed" ref="userLastName" required/>
-                            
-                        </label>
-                            <label htmlFor="txtEmail"> 
-                                Email
-                              <input id="txtEmail" type="email" placeholder="Email" ref="userEmail" required/>
-                            </label>
-                          
+         <ul className="flex-outer">
+                <li>
+                 <label htmlFor="firstName">FirstName</label>
+                 <input id="firstName" type="txt" placeholder="John" ref="userFirstName" required/>
+                </li>
 
-                            <label htmlFor="txtPassword">
-                                Password
-                                <input id="txtPassword" type="password" placeholder="Password" ref="userPassword"/>
-                            </label>
-                            
-                            
-                            
-                        
-                </div>
-        <div className="signup-btns">
+                <li>
+                <label htmlFor="lastName">Surname</label>
+                 <input id="lastName" type="txt" placeholder="AppleSeed" ref="userLastName" required/>
+                </li>
 
-                 <button id="signUpBtn" className="signUp-btn" onClick={this.signup}>
-                    Sign Up
-                 </button>
-            </div>
+                <li>
+                    <label htmlFor="txtEmail"> Email</label>
+                    <input id="txtEmail" type="email" placeholder="Email" ref="userEmail" required/>
+                </li>
+
+                <li>
+                    <label htmlFor="txtPassword">Password </label>
+                    <input id="txtPassword" type="password" placeholder="Password" ref="userPassword"/>
+                </li>
+                    <li>
+                 <button id="signUpBtn" className="signUp-btn" onClick={this.signup}>Sign Up</button>
+                 </li>
+            
+            </ul>
        </form>
         );
     }
@@ -76,26 +70,25 @@ class SignUp extends Component {
          if(user != null){
              usersRef.child(uid).set({
                  "firstName":firstName,
-                 "lastName":lastName,
+                 "lastName":lastName
              })
              
          }
+
+         setTimeout(()=>{
+                browserHistory.push("/");
+            },3000)
+
         })
         .catch((e)=>{
             console.log(e.message);
-             this.setState({
-                 error:true,
-                 errorMessage: e.message
-             })
+            this.props.errorModalTrigger(e.message)
+            
         })
 
     }
 
-    modalClosedButtonPressed = () => {
-        this.setState({
-            error:false
-        })
-    }
+   
 
 }
 

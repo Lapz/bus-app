@@ -5,10 +5,15 @@ class ErrorModal extends Component {
         return (
         <div className="modal-overlay" id="modal-overlay">
                 <div className="modal" id="modal">
-                    <button className="close-button" id="close-button" onClick={this.closeModal}>X</button>
-                     <div className="modal-guts">
+
+                    <ul>
+                     <li>
+                        <button className="close-button" id="close-button" onClick={this.closeModal}>X</button>
+                     </li>
+                     <li>
                         {this.props.errorMessage}
-                    </div>
+                    </li>
+                    </ul>
                 </div>
         </div>
             

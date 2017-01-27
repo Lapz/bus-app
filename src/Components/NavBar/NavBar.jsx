@@ -18,7 +18,7 @@ class NavBar extends Component {
              <div className="wrapper">
               <nav>
                 <ul>
-                    <li><Link to="/findStation">Search For a stations </Link></li>
+                    <li><Link to="/findStation" >Search For a stations </Link></li>
                     <li><Link to="/">Train Status</Link></li>
                     <li><Link to="/favourites">Favourites</Link></li>
          {(this.state.signindIn === false) ? (<li><Link to="/login">Login</Link></li>): (<li><button onClick={this.signUserOut}>Logout</button></li>)}

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as firebase from 'firebase';
-
+import {browserHistory} from 'react-router'
+import {checkIfAlreadyFavoureted} from './Helpers/fireBase'
 class StationFavouriteButton extends Component {
 
     constructor(){
@@ -24,34 +25,34 @@ class StationFavouriteButton extends Component {
     addFavourite = ()=> {
 
    var database = firebase.database()
-   var rootRef = database.ref().child("users/lenard")
+   var user = firebase.auth().currentUser
+   
 
-   var usersFavouritesRefs = rootRef.child("favouriteStations");
-
- 
-
-  usersFavouritesRefs.on("value",(snapshot)=>{
-       console.log(snapshot.val());
-
-        console.log(snapshot.val())
+   if(user != null){
+       var userUid = user.uid;
+    var rootRef = database.ref().child("users/" + userUid)
 
 
-       var sd = database.ref().child("favouriteStations/" + snapshot.key)
+   
+ var usersFavouritesRefs = rootRef.child("favouriteStations");
 
-       console.log(sd);
-
-       sd.once('value', (data)=>{
-           console.log(data.val());
-       })
-
-
-   })
-
- usersFavouritesRefs.push({
-    
+ var alreadyFavourited =checkIfAlreadyFavoureted(this.props.stationId,usersFavouritesRefs)
+ if( alreadyFavourited == false){
+     usersFavouritesRefs.push({
           stationName:this.props.stationName,
           id:this.props.stationId 
     })
+        
+ }else {
+    console.log("Dont do it")
+ }
+
+ 
+  
+   }else{
+       browserHistory.push("/login")
+   }
+  
 }
 
 
