@@ -27,14 +27,13 @@ class Index extends Component {
   render() {
     return (
     <Router history={browserHistory}>
-    <Route component={App}>
+      <Route component={App}>
         <Route path={'/'} component={LineStatus}></Route>
         <Route path={'/findStation'} component={StationSearch}></Route>
         <Route path="favourites" component={Favourite}></Route>
         <Route path ="login" component={Login}></Route>
       </Route>
-     
-      </Router>
+    </Router>
      
     );
   }
