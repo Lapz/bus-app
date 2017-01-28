@@ -70,7 +70,10 @@ class SignUp extends Component {
          if(user != null){
              usersRef.child(uid).set({
                  "firstName":firstName,
-                 "lastName":lastName
+                 "lastName":lastName,
+                 "favouriteStations":{
+                     "fake":"Adsfas"
+                 }
              })
              
          }

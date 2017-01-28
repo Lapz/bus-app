@@ -1,7 +1,7 @@
 function checkIfAlreadyFavoureted(stationID,fireBaseRef){
-
-    
     fireBaseRef.on('value',(snapShot)=>{
+
+    console.log(snapShot.val())
         snapShot.forEach((data)=>{
             console.log(data.val().id);
 

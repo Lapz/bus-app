@@ -14,7 +14,8 @@ class StationFavouriteButton extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.addFavourite}>Click here</button>
+            {(this.state.alreadyFavourited === false)? (<button onClick={this.addFavourite}>Click here</button>): (<button onClick={this.removeFavourite}>Remove here</button>)}
+               
             </div>
         );
     }
@@ -22,7 +23,38 @@ class StationFavouriteButton extends Component {
 
     // Custom Functions 
 
-    addFavourite = ()=> {
+
+    removeFavourite = () => {
+             var database = firebase.database()
+             var user = firebase.auth().currentUser
+
+             var userUID = user.uid
+              var favsRef = database.ref().child("users/"+userUID+"/favouriteStations")
+
+          
+
+              favsRef.on('value',(snapshot)=>{
+
+
+                  snapshot.forEach((data)=>{
+
+                      console.log(data)
+                      var serverStationID = data.val().id;
+
+                  console.log(serverStationID)
+
+                      if(serverStationID === this.props.stationId){
+                          favsRef.child(snapshot.key).remove()
+                      }
+                  })
+              })
+
+        this.setState({
+            alreadyFavourited:false
+            })
+    }
+
+addFavourite = ()=> {
 
    var database = firebase.database()
    var user = firebase.auth().currentUser
@@ -36,15 +68,23 @@ class StationFavouriteButton extends Component {
    
  var usersFavouritesRefs = rootRef.child("favouriteStations");
 
- var alreadyFavourited =checkIfAlreadyFavoureted(this.props.stationId,usersFavouritesRefs)
- if( alreadyFavourited == false){
+ var alreadyFavourited = checkIfAlreadyFavoureted(this.props.stationId,usersFavouritesRefs)
+ 
+if( alreadyFavourited == true){
+    ""
+    
+        
+ }else {
      usersFavouritesRefs.push({
           stationName:this.props.stationName,
           id:this.props.stationId 
     })
-        
- }else {
-    console.log("Dont do it")
+
+    this.setState({
+        alreadyFavourited:true
+    })
+
+
  }
 
  
