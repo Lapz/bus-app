@@ -35,16 +35,16 @@ class StationFavouriteButton extends Component {
 
               favsRef.on('value',(snapshot)=>{
 
-
+                   
                   snapshot.forEach((data)=>{
 
                       console.log(data)
                       var serverStationID = data.val().id;
 
-                  console.log(serverStationID)
-
                       if(serverStationID === this.props.stationId){
-                          favsRef.child(snapshot.key).remove()
+
+                  
+                          favsRef.child(data.key).remove()
                       }
                   })
               })
@@ -71,7 +71,8 @@ addFavourite = ()=> {
  var alreadyFavourited = checkIfAlreadyFavoureted(this.props.stationId,usersFavouritesRefs)
  
 if( alreadyFavourited == true){
-    ""
+  
+  console.log("ADFASD")
     
         
  }else {
