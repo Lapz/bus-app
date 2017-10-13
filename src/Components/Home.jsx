@@ -4,7 +4,7 @@ import Title from '../react-components/Title';
 
 import Page from "../react-components/Page";
 import Loading from "../react-components/Loading";
-import LineItem from "./LineStatus/LineItem";
+import LineItem from "./LineItem.jsx";
 
 
 class Home extends Component {
@@ -14,7 +14,7 @@ class Home extends Component {
         this.state = {
         trainLines: [],
         refreshTime: "",
-       error: false
+        error: false
         }
     }
 
@@ -38,7 +38,7 @@ class Home extends Component {
         return (
             (this.state.trainLines.length > 0) ?(
             <Page>
-                    <Title text="Homepage" align="has-text-centered"/>
+                    <Title text="Line Status" align="has-text-centered"/>
                     <section id="blocks">
                         {(this.state.trainLines.map((item, index) => {
                             return ((item.lineStatuses)? ( <LineItem lineName={item.name} distruptionReason={item.lineStatuses[0].reason} key={index} status={item.lineStatuses[0].statusSeverityDescription}/> ) : (<LineItem lineName={item.name} key={index} status={item.lineStatuses[0].statusSeverityDescription}/>))

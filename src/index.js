@@ -4,7 +4,6 @@ import App from "./App";
 import "./index.css";
 import {Router, Route, hashHistory} from "react-router";
 import StationSearch from "./Components/StationSearch/StationSearch.jsx";
-import LineStatus from "./Components/LineStatus/LineItemContainer.jsx";
 import Favourite from "./Components/Favourites/Favourites.jsx";
 import * as firebase from "firebase";
 import Home from "./Components/Home.jsx";
