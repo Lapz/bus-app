@@ -8,9 +8,11 @@ class NavBar extends Component {
              <div className="wrapper">
               <nav>
                 <ul>
-                    <li><Link to="/findStation">Search For a stations </Link></li>
-                    <li><Link to="/">Train Status</Link></li>
-                    <li><Link to="/favourites">Favourites</Link></li>
+                    <li><Link to="/">Rail Status</Link></li>
+                    <li><Link to="/find">Search For a stations </Link></li>
+                    
+                  {  // <li><Link to="/favourites">Favourites</Link></li>
+                  }
                 </ul>
              </nav>
         </div>

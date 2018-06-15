@@ -18,7 +18,6 @@ class LineRefreshBtn extends Component {
     }
 
     handleClick = () => {
-    console.log("Button Clicked");
     this.props.callRefresh();
     }
 }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import {createArrivals,filterTrains} from './Helpers/StationQuery';
 import Star from './img/star.svg';
 import * as firebase from 'firebase';
+import {get_logo } from './Helpers/logo';
 
 class StationItem extends Component {
     constructor(){
@@ -11,6 +12,7 @@ class StationItem extends Component {
         this.state = {
             inboundTrains:[],
             outboundTrains:[],
+            loading:true,
             error:false
         }
     }
@@ -18,55 +20,65 @@ class StationItem extends Component {
 
     render() {
         var stationServices = this.props.stationServices.map((transportType,index) =>{
+
+            var style = {
+                "height":"50px",
+            };
             return(
                 <li key={index}>
-                {transportType}
+                 <img src={get_logo(transportType)} alt="log" style={
+                     style
+                 }/> 
                 </li>
             )
         });
 
         return (
 
-            <li>
+            <div>
+
+            { (this.state.loading == false) ? (<li>
                 <div>
 
-                    <h1>{this.props.stationName} <img src={Star} alt="log" onClick={this.addFavourite}/></h1>
-                    <p>Methods of transport offered: </p>
-                    <ul>
+                    <h1>{this.props.stationName}</h1>
+                    <ul className ="logo">
                     {stationServices}
                     </ul>
 
-        {(this.state.error === false )? ( <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} />):(<div><p>An error ocurred </p> <button onClick={this.handleTimeTableClick}> Retry </button></div>)}
+        { (this.state.error === false )? ( <StationTrainTable outboundTrains={this.state.outboundTrains} inboundTrains={this.state.inboundTrains} handleRefresh={this.handleTimeTableClick} />):(<div><p>An error ocurred </p> <button onClick={this.handleTimeTableClick}> Retry </button></div>)}
 
                    
                  
                         
                 </div>
 
-            </li>
+            </li>): (<div className="loader"></div>) }
+</div>
+            
         );
     }
     /// Stop the rerender ///
     componentDidMount(){
     var url = createArrivals(this.props.stationId);
-    console.log(url);
+
     axios.get(url)
     .then((response) =>{
-      //console.log(response);
+   
       var newOutboundTrains,newInboundTrains;
       
       [newOutboundTrains, newInboundTrains] = filterTrains(response.data);
-      console.log(newInboundTrains,newOutboundTrains);
+   
       
       this.setState({
         inboundTrains:newInboundTrains,
         outboundTrains:newOutboundTrains,
-        error:false
+        error:false,
+        loading:false,
       })
 
     })
     .catch((error) =>{
-        console.log(error);
+    
         this.setState({
             error:true
         })
@@ -90,17 +102,15 @@ addFavourite = ()=> {
 
     handleTimeTableClick = () => {
 
-    console.log("click");
-   // console.log(stationId);
+
     var url = createArrivals(this.props.stationId);
-    console.log(url);
+
     axios.get(url)
     .then((response) =>{
-      //console.log(response);
       var newOutboundTrains,newInboundTrains;
       
       [newOutboundTrains, newInboundTrains] = filterTrains(response.data);
-      console.log(newInboundTrains,newOutboundTrains);
+  
       
       this.setState({
         inboundTrains:newInboundTrains,
@@ -111,7 +121,7 @@ addFavourite = ()=> {
     })
     .catch((error) =>{
 
-    console.log(error);
+
     this.setState({
         error:true
     })

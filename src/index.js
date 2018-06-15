@@ -26,8 +26,10 @@ class Index extends Component {
     <Router history={hashHistory}>
     <Route component={App}>
         <Route path={'/'} component={LineStatus}></Route>
-        <Route path={'/findStation'} component={StationSearch}></Route>
-        <Route path="favourites" component={Favourite}></Route>
+        <Route path={'/find'} component={StationSearch}></Route>
+        {
+          //<Route path="favourites" component={Favourite}></Route>
+        }
       </Route>
      
       </Router>

@@ -54,13 +54,11 @@ class LineItemContainer extends Component {
   componentDidMount(){
     axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status ')
     .then((response) => {
-      console.log(response)
       this.setState({
           trainLines:response.data
       })
     })
     .catch((error) => {
-      console.log(error)
       this.setState({
         error:true
       })
@@ -68,7 +66,7 @@ class LineItemContainer extends Component {
   }
 
   callRefresh = () => {
-    console.log("Calling A refresh");
+  
     axios.get('https://api.tfl.gov.uk/Line/Mode/tube/Status ')
     .then((response) => {
 
@@ -82,8 +80,6 @@ class LineItemContainer extends Component {
       })
     })
     .catch((error) => {
-      console.log(error)
-
       this.setState({
         error:true
       })

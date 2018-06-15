@@ -36,13 +36,13 @@ class StationSearch extends Component {
   
 
   handleSubmitText = (text) => {
-    console.log(text);
+
     var normalIDS;
     var url = createStationQueryUrl(text);
     axios
       .get(url)
       .then((response) => {
-        console.log(response);
+     
 
         var matchesArrayByType = completeMatches(response);
 
@@ -75,7 +75,7 @@ class StationSearch extends Component {
         return results;
       })
       .then((hubData) => {
-        console.log(hubData)
+  
 
         var mergedArray = [
           ...hubData,
@@ -84,12 +84,11 @@ class StationSearch extends Component {
         var flattendArray = []
           .concat
           .apply([], mergedArray)
-        console.log(mergedArray);
-        console.log(flattendArray)
+       
         this.setState({stations: flattendArray, error: false})
       })
       .catch((error) => {
-        console.log(error);
+    
         this.setState({error: true})
       })
   }

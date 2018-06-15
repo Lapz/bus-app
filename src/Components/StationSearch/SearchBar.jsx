@@ -13,7 +13,6 @@ class SearchBar extends Component{
 
 handleSubmit =(e) =>{
     e.preventDefault();
-    console.log("Handling the Click");
     this.props.handleSubmitText(this.refs.stationQuery.value);
 
   }

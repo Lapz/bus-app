@@ -4,10 +4,21 @@ import './css/StationItemContainer.css';
 
 class StationItemContainer  extends Component {
 
+   constructor(){
+    super()
+    this.state = {
+      loading:true,
+    }
+  }
+
 	render() {
 	 
     if(this.props.stationArray){
       var stationsForList = this.props.stationArray;
+
+      // this.setState({
+      //   loading:false
+      // });
 
     stationsForList = stationsForList.map((item,index)=>{
         return(
@@ -16,14 +27,31 @@ class StationItemContainer  extends Component {
       })
     };
 
-		return (
-			<div className="station-items">
+
+    
+
+    
+
+    return (
+     <div> 
+{ (this.state.loading == false) ?(<div className="station-items">
         <ul>
             {stationsForList}
         </ul>
 			</div>
-		);
+		) : (
+      <div className="loader"></div>
+    ) } 
+
+    </div>
+    );
+     
 	}
+  componentDidMount() {
+    this.setState( {
+      loading:false,
+    })
+  }
 }
 
 export default StationItemContainer

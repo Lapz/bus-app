@@ -24,10 +24,10 @@ class StationTrainTable extends Component {
 	
 
         return (
-            <div className="table-wrapper">
+            <div className="tbl-header">
 
 					<button onClick={this.handleTimeTableRefresh}>Refresh Incoming Trains</button>
-				<table>
+				<table  cellPadding="0" cellSpacing="0">
 					<thead>
 						<tr>
 							<th> Line </th>
@@ -61,7 +61,7 @@ class StationTrainTable extends Component {
     }
 
 	handleTimeTableRefresh = () => {
-		console.log("Clicked");
+	
 		this.props.handleRefresh()
 	}
 
