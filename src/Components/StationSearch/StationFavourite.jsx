@@ -1,21 +1,20 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 
 class StationFavouriteButton extends Component {
+  constructor() {
+    super();
 
-    constructor(){
-        super()
-
-        this.state = {
-            alreadyFavourited:false
-        }
-    }
-    render() {
-        return (
-            <div>
-                <button>Clickhere</button>
-            </div>
-        );
-    }
+    this.state = {
+      alreadyFavourited: false
+    };
+  }
+  render() {
+    return (
+      <div>
+        <button>Clickhere</button>
+      </div>
+    );
+  }
 }
 
 export default StationFavouriteButton;

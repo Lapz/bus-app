@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import LineItemContainer from './LineItemContainer.jsx';
+import React, { Component } from "react";
+import LineItemContainer from "./LineItemContainer.jsx";
 
 LineStatus = () => {
-        <LineItemContainer />
-}
+  <LineItemContainer />;
+};
 
-export default LineStatus
+export default LineStatus;

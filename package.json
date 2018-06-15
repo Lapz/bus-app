@@ -66,7 +66,8 @@
     "start": "node scripts/start.js",
     "deploy": "npm run build&&gh-pages -d build",
     "build": "node scripts/build.js",
-    "test": "yarn jest --watch"
+    "test": "yarn jest --watch",
+    "prettier": "prettier --write 'src/**/*.js' 'src/**/*.jsx'"
   },
   "jest": {
     "collectCoverageFrom": [

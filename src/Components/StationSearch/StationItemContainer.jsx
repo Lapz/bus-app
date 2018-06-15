@@ -1,57 +1,52 @@
-import React, {Component} from 'react';
-import StationItem from './StationItem.jsx';
-import './css/StationItemContainer.css';
+import React, { Component } from "react";
+import StationItem from "./StationItem.jsx";
+import "./css/StationItemContainer.css";
 
-class StationItemContainer  extends Component {
-
-   constructor(){
-    super()
+class StationItemContainer extends Component {
+  constructor() {
+    super();
     this.state = {
-      loading:true,
-    }
+      loading: true
+    };
   }
 
-	render() {
-	 
-    if(this.props.stationArray){
+  render() {
+    if (this.props.stationArray) {
       var stationsForList = this.props.stationArray;
 
       // this.setState({
       //   loading:false
       // });
 
-    stationsForList = stationsForList.map((item,index)=>{
-        return(
-          <StationItem stationName={item.name || item.commonName} key={item.id} stationId={item.id} stationServices={item.modes} />
-        )
-      })
-    };
-
-
-    
-
-    
+      stationsForList = stationsForList.map((item, index) => {
+        return (
+          <StationItem
+            stationName={item.name || item.commonName}
+            key={item.id}
+            stationId={item.id}
+            stationServices={item.modes}
+          />
+        );
+      });
+    }
 
     return (
-     <div> 
-{ (this.state.loading == false) ?(<div className="station-items">
-        <ul>
-            {stationsForList}
-        </ul>
-			</div>
-		) : (
-      <div className="loader"></div>
-    ) } 
-
-    </div>
+      <div>
+        {this.state.loading == false ? (
+          <div className="station-items">
+            <ul>{stationsForList}</ul>
+          </div>
+        ) : (
+          <div className="loader" />
+        )}
+      </div>
     );
-     
-	}
+  }
   componentDidMount() {
-    this.setState( {
-      loading:false,
-    })
+    this.setState({
+      loading: false
+    });
   }
 }
 
-export default StationItemContainer
+export default StationItemContainer;
