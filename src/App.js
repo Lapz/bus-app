@@ -8,8 +8,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
-        {this.props.children}
+        <header>
+          <NavBar />
+        </header>
+        <div className="container">{this.props.children}</div>
       </div>
     );
   }

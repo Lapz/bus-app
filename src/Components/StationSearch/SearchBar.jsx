@@ -3,19 +3,22 @@ import React, { Component } from "react";
 class SearchBar extends Component {
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-      <div className="group">
-        <input
-          type="text"
-          placeholder="Train Station Name"
-          ref="stationQuery"
-        />
-         <span class="highlight"></span>
-        <span class="bar"></span>
-      
-        <button className="button"> Find Station</button>
-        </div>
-      </form>
+      <div className="row">
+        <form className="col s12" onSubmit={this.handleSubmit}>
+          <div className="row">
+            <div className="input-field inline col s8">
+              <input
+                type="text"
+                placeholder="Station"
+                ref="stationQuery"
+              />
+            </div>
+            <div className="col s2 ">
+              <button className="btn" type="submit"> Find Station</button>
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
 
