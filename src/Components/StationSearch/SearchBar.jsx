@@ -4,12 +4,17 @@ class SearchBar extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+      <div className="group">
         <input
           type="text"
           placeholder="Train Station Name"
           ref="stationQuery"
         />
-        <button> Find Station</button>
+         <span class="highlight"></span>
+        <span class="bar"></span>
+      
+        <button className="button"> Find Station</button>
+        </div>
       </form>
     );
   }

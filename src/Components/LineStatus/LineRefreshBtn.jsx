@@ -4,7 +4,7 @@ import "./css/LineRefreshBtn.css";
 class LineRefreshBtn extends Component {
   render() {
     return (
-      <div className="btnWrapper">
+      <div>
         {this.props.refreshTime ? (
           <p>The last refresh Date was the {this.props.refreshTime}</p>
         ) : (

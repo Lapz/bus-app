@@ -42,7 +42,7 @@ class StationTrainTable extends Component {
 
     return (
       <div className="tbl-header">
-        <button onClick={this.handleTimeTableRefresh}>
+        <button className="button" onClick={this.handleTimeTableRefresh}>
           Refresh Incoming Trains
         </button>
         <table cellPadding="0" cellSpacing="0">

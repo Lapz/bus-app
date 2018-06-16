@@ -56,3 +56,28 @@ table{
 .logo li {
     display: inline;
 }
+
+
+
+
+/* seacrh */
+
+.group 	 { 
+    position:relative; 
+    margin-bottom:45px; 
+  }
+input {
+    font-size:18px;
+    padding:10px 10px 10px 5px;
+    display:inline;
+    border:none;
+    border-bottom:1px solid #757575;
+}
+
+input:focus 		{ outline:none; }
+
+
+.button {
+    padding-left: 1.2em
+}
+  

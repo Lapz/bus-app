@@ -40,3 +40,30 @@ body {
     font-weight: 300;
     font-size: 12px;
  }
+
+
+
+button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.16), 0 2px 4px rgba(0, 0, 0, 0.26);
+    color: #000000;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 300;
+    height: 52px;
+    line-height: 50px;
+    padding: 0 15px;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: box-shadow 0.2s cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  }
+ button:hover,button:focus,button:active {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.16), 0 6px 12px rgba(0, 0, 0, 0.32);
+    transition: box-shadow 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+ button:focus {
+    outline: 0;
+  }
